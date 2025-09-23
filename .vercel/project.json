@@ -1,0 +1,16 @@
+{
+  "projectId": "prj_Z8FqvyiezVom0ErBi0As5Y0kAV1y",
+  "orgId": "team_MtLD9hKuWAvoDd3KmiHs9zUg",
+  "projectName": "vc-standalone",
+  "settings": {
+    "createdAt": 1758659957245,
+    "framework": "hono",
+    "devCommand": null,
+    "installCommand": null,
+    "buildCommand": null,
+    "outputDirectory": null,
+    "rootDirectory": "apps/api",
+    "directoryListing": false,
+    "nodeVersion": "22.x"
+  }
+}
