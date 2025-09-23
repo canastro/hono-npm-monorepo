@@ -84,6 +84,7 @@ jobs:
             echo "ERROR: artifact.tar not found"
             exit 1
           fi
+        working-directory: apps/api
       - name: Deploy to Vercel
         working-directory: apps/api
         run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }} --yes
