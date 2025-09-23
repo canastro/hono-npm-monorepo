@@ -28,24 +28,21 @@ jobs:
 
       - name: Link Project
         run: vercel link --token=${{ secrets.VERCEL_TOKEN }} --yes
-        working-directory: apps/api
 
       - name: Build Project
         run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }} --yes
-        working-directory: apps/api
         env:
           VERCEL_EXPERIMENTAL_STANDALONE_BUILD: "1"
 
       - name: Pack
         run: tar -cvf artifact.tar .vercel
-        working-directory: apps/api
 
       # Upload with absolute path from repository root
       - name: Upload .vercel folder
         uses: actions/upload-artifact@v4
         with:
           name: vercel-build-artifact
-          path: apps/api/artifact.tar
+          path: artifact.tar
           if-no-files-found: error
           retention-days: 1
           include-hidden-files: true
@@ -73,7 +70,6 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: vercel-build-artifact
-          path: apps/api
 
       - name: Unpack .vercel folder
         run: |
@@ -84,7 +80,5 @@ jobs:
             echo "ERROR: artifact.tar not found"
             exit 1
           fi
-        working-directory: apps/api
       - name: Deploy to Vercel
-        working-directory: apps/api
         run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }} --yes
