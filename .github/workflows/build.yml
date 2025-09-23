@@ -45,7 +45,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: vercel-build-artifact
-          path: artifact.tar
+          path: apps/api/artifact.tar
           if-no-files-found: error
           retention-days: 1
           include-hidden-files: true
@@ -73,16 +73,17 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: vercel-build-artifact
-          path: .
+          path: apps/api/.vercel
 
       - name: Unpack .vercel folder
         run: |
-          if [ -f "artifact.tar" ]; then
+          if [ -f "apps/api/artifact.tar" ]; then
             echo "Extracting artifact.tar"
-            tar -xvf artifact.tar
+            tar -xvf apps/api/artifact.tar
           else
             echo "ERROR: artifact.tar not found"
             exit 1
           fi
       - name: Deploy to Vercel
+        working-directory: apps/api
         run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
