@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import {log} from "@repo/logger";
+import { log } from "@repo/logger";
 const app = new Hono();
 
 app.get("/", (c) => {

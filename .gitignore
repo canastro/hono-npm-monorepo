@@ -5,6 +5,7 @@ node_modules
 .pnp
 .pnp.js
 .vercel
+.vercel/repo.json
 # Local env files
 .env
 .env.local
