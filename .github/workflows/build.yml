@@ -73,13 +73,13 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: vercel-build-artifact
-          path: apps/api/.vercel
+          path: .
 
       - name: Unpack .vercel folder
         run: |
-          if [ -f "apps/api/artifact.tar" ]; then
+          if [ -f "artifact.tar" ]; then
             echo "Extracting artifact.tar"
-            tar -xvf apps/api/artifact.tar
+            tar -xvf artifact.tar
           else
             echo "ERROR: artifact.tar not found"
             exit 1
